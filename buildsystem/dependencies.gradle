@@ -28,7 +28,6 @@ ext {
 
   presentationDependencies = [
       butterKnife:        "com.jakewharton:butterknife:${butterKnifeVersion}",
-      recyclerView:       "com.android.support:recyclerview-v7:${recyclerViewVersion}",
   ]
 
   presentationTestDependencies = [
@@ -48,7 +47,6 @@ ext {
       parceler:           "org.parceler:parceler:${parcelerVersion}",
       picasso:            "com.squareup.picasso:picasso:${picassoVersion}",
       androiDiskCache:    "com.himanshuvirmani:androidcache:${diskCacheVersion}",
-      androidVolley:      "com.himanshuvirmani:volley-okhttp-gson-library:${volleyVersion}",
       lombok:             "org.projectlombok:lombok:${lombokVersion}"
   ]
 
