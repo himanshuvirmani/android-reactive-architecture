@@ -1,0 +1,61 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.neenbedankt.android-apt'
+
+android {
+  compileSdkVersion 21
+  buildToolsVersion "22.0.1"
+
+  defaultConfig {
+    applicationId "com.himanshuvirmani.androidreactivearch"
+    minSdkVersion 15
+    targetSdkVersion 21
+    versionCode 1
+    versionName "1.0"
+  }
+  buildTypes {
+    release {
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+    }
+  }
+
+  packagingOptions {
+    exclude 'LICENSE.txt'
+    exclude 'META-INF/DEPENDENCIES'
+    exclude 'META-INF/ASL2.0'
+    exclude 'META-INF/NOTICE'
+    exclude 'META-INF/LICENSE'
+  }
+
+  lintOptions {
+    abortOnError false;
+    disable 'InvalidPackage'  // Some libraries have issues with this
+    disable 'OldTargetApi'    // Due to Robolectric that modifies the manifest when running tests
+  }
+}
+
+dependencies {
+  def presentationDependencies = rootProject.ext.presentationDependencies
+  def presentationTestDependencies = rootProject.ext.presentationTestDependencies
+  def dataDependencies = rootProject.ext.dataDependencies
+  compile fileTree(dir: 'libs', include: ['*.jar'])
+  compile 'com.android.support:appcompat-v7:22.0.0'
+  apt dataDependencies.daggerCompiler
+  compile presentationDependencies.butterKnife
+  compile presentationDependencies.recyclerView
+  compile dataDependencies.dagger
+  compile dataDependencies.androidAnnotations
+  compile dataDependencies.parcelerApi
+  compile dataDependencies.androiDiskCache
+  compile dataDependencies.androidVolley
+  provided dataDependencies.parceler
+  provided dataDependencies.lombok
+  apt dataDependencies.lombok
+  provided dataDependencies.javaxAnnotation
+
+  androidTestCompile presentationTestDependencies.mockito
+  androidTestCompile presentationTestDependencies.dexmaker
+  androidTestCompile presentationTestDependencies.dexmakerMockito
+  androidTestCompile presentationTestDependencies.espresso
+  androidTestCompile presentationTestDependencies.testingSupportLib
+}
