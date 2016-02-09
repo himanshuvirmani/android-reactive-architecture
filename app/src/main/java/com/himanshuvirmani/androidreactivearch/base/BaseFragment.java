@@ -15,7 +15,6 @@ import javax.inject.Inject;
  */
 public class BaseFragment extends Fragment {
 
-  @Inject protected ApiManager apiManager;
 
   private FragmentComponent component;
 
@@ -35,7 +34,7 @@ public class BaseFragment extends Fragment {
   }
 
   public View onCreateView(View view) {
-    ButterKnife.inject(this, view);
+    ButterKnife.bind(this, view);
     return view;
   }
 }

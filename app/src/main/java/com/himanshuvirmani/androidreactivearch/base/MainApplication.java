@@ -1,11 +1,17 @@
 package com.himanshuvirmani.androidreactivearch.base;
 
 import android.app.Application;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import com.frogermcs.dagger2metrics.Dagger2Metrics;
 import com.himanshuvirmani.androidreactivearch.BuildConfig;
 import com.himanshuvirmani.androidreactivearch.base.dependencyinjection.components.ApplicationComponent;
 import com.himanshuvirmani.androidreactivearch.base.dependencyinjection.components.DaggerApplicationComponent;
+import com.himanshuvirmani.androidreactivearch.base.dependencyinjection.modules.ApiModule;
 import com.himanshuvirmani.androidreactivearch.base.dependencyinjection.modules.DataModule;
 import com.himanshuvirmani.androidreactivearch.base.dependencyinjection.modules.MainApplicationModule;
+import com.himanshuvirmani.androidreactivearch.base.dependencyinjection.modules.ModelsModule;
+import com.himanshuvirmani.androidreactivearch.base.dependencyinjection.modules.NetworkModule;
 import com.himanshuvirmani.androidreactivearch.base.dependencyinjection.modules.SystemServiceModule;
 import com.himanshuvirmani.androidreactivearch.logger.FileLog;
 import com.himanshuvirmani.androidreactivearch.logger.Log;
@@ -20,14 +26,14 @@ public class MainApplication extends Application {
 
   @Override public void onCreate() {
     super.onCreate();
-    applicationComponent = DaggerApplicationComponent.builder()
-        .mainApplicationModule(new MainApplicationModule(this))
-        .systemServiceModule(new SystemServiceModule(this))
-        .dataModule(new DataModule(this))
-        .build();
+    applicationComponent = prepareApplicationComponent().build();
     applicationComponent.inject(this);
     assignLogger();
+    if (BuildConfig.DEBUG) {
+      Dagger2Metrics.enableCapturing(this);
+    }
   }
+
 
   public ApplicationComponent component() {
     return applicationComponent;
@@ -70,5 +76,21 @@ public class MainApplication extends Application {
 
       // TODO e.g., Crashlytics.logException(t);
     }
+  }
+
+  @NonNull protected DaggerApplicationComponent.Builder prepareApplicationComponent() {
+
+    return DaggerApplicationComponent.builder()
+        .mainApplicationModule(new MainApplicationModule(this))
+        .systemServiceModule(new SystemServiceModule(this))
+        .dataModule(new DataModule(this))
+        .apiModule(new ApiModule())
+        .networkModule(new NetworkModule())
+        .modelsModule(new ModelsModule());
+  }
+
+
+  @NonNull public static MainApplication get(Context context) {
+    return (MainApplication) context.getApplicationContext();
   }
 }
