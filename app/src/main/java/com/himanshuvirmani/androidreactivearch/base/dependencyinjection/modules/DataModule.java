@@ -41,8 +41,5 @@ public class DataModule {
     return cacheManager;
   }
 
-  @Provides @Singleton ApiManager provideApiManager() {
-    return new ApiManager(application);
 
-  }
 }

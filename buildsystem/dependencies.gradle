@@ -7,7 +7,7 @@ allprojects {
 ext {
   //Libraries
   daggerVersion = '2.0'
-  butterKnifeVersion = '6.0.0'
+  butterKnifeVersion = '7.0.1'
   recyclerViewVersion = '21.0.3'
   javaxAnnotationVersion = '10.0-b28'
   androidAnnotationsVersion = '20.0.0'

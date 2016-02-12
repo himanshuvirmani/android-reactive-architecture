@@ -3,13 +3,13 @@ package com.himanshuvirmani.androidreactivearch.data.api;
 import com.himanshuvirmani.androidreactivearch.data.ApiConfig;
 import com.himanshuvirmani.androidreactivearch.data.entity.Post;
 import java.util.List;
-import retrofit.GsonConverterFactory;
-import retrofit.Retrofit;
-import retrofit.RxJavaCallAdapterFactory;
-import retrofit.http.Body;
-import retrofit.http.GET;
-import retrofit.http.PUT;
-import retrofit.http.Path;
+import retrofit2.GsonConverterFactory;
+import retrofit2.Retrofit;
+import retrofit2.RxJavaCallAdapterFactory;
+import retrofit2.http.Body;
+import retrofit2.http.GET;
+import retrofit2.http.PUT;
+import retrofit2.http.Path;
 import rx.Observable;
 
 /**

@@ -1,4 +1,4 @@
-package com.himanshuvirmani.androidreactivearch.ui.fragments;
+package com.himanshuvirmani.androidreactivearch.mvp.ui.fragments;
 
 import android.support.v7.app.ActionBarActivity;
 import android.app.Activity;
