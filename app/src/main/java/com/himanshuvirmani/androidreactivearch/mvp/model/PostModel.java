@@ -3,6 +3,7 @@ package com.himanshuvirmani.androidreactivearch.mvp.model;
 import android.support.annotation.NonNull;
 import com.himanshuvirmani.androidreactivearch.data.api.ServerApi;
 import com.himanshuvirmani.androidreactivearch.data.entity.Post;
+import javax.inject.Inject;
 import rx.Observable;
 
 /**
@@ -12,6 +13,7 @@ public class PostModel {
 
   @NonNull private final ServerApi api;
 
+  @Inject
   public PostModel(@NonNull ServerApi api) {
     this.api = api;
   }

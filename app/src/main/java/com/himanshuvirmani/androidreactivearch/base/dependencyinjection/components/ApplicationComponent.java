@@ -16,6 +16,7 @@ import com.himanshuvirmani.androidreactivearch.base.dependencyinjection.modules.
 import com.himanshuvirmani.androidreactivearch.base.dependencyinjection.modules.ModelsModule;
 import com.himanshuvirmani.androidreactivearch.base.dependencyinjection.modules.NetworkModule;
 import com.himanshuvirmani.androidreactivearch.base.dependencyinjection.modules.SystemServiceModule;
+import com.himanshuvirmani.androidreactivearch.data.api.ServerApi;
 import com.himanshuvirmani.androidreactivearch.mvp.model.PostListModel;
 import com.himanshuvirmani.androidreactivearch.mvp.model.PostModel;
 import com.himanshuvirmani.androidreactivearch.utils.NetworkStateManager;
@@ -47,12 +48,14 @@ public interface ApplicationComponent extends ApplicationServicesGraph {
 
   CacheManager cacheManager();
 
+  ServerApi provideServerApi();
+
   //ApiManager apiManager();
 
   // Added model specific methods
-  PostModel postModel();
+  //PostModel postModel();
 
-  PostListModel postListModel();
+  //PostListModel postListModel();
 
 
 }

@@ -4,6 +4,7 @@ import android.support.annotation.NonNull;
 import com.himanshuvirmani.androidreactivearch.data.api.ServerApi;
 import com.himanshuvirmani.androidreactivearch.data.entity.Post;
 import java.util.List;
+import javax.inject.Inject;
 import rx.Observable;
 
 /**
@@ -13,6 +14,7 @@ public class PostListModel {
 
   @NonNull private final ServerApi api;
 
+  @Inject
   public PostListModel(@NonNull ServerApi api) {
     this.api = api;
   }
